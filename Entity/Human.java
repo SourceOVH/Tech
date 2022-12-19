@@ -43,21 +43,6 @@ public class Human {
                 + "-----------------"
                 + '\n';
     }
-    public String toStringSearch() {
-        return "-----------------"
-                + '\n'
-                +"Фамилия: " + family + '\n'
-                + "Имя: " + name + '\n'
-                + "Отчество: " + patronymic + '\n'
-                + "Пол: " + gender + '\n'
-                + "О себе: " + requirements + '\n'
-                + "Запрос от партнера: " + request + '\n'
-                + "Дата регистрации: " + dateRegister + '\n'
-                + "ID: " + getID() + '\n'
-                + "-----------------"
-                + '\n';
-    }
-
 
     public String getFamily() {
         return family;
