@@ -1,13 +1,11 @@
 import Entity.Human;
-import Service.Search;
-import Service.Strings;
-import Service.TextCorrect;
-import Service.Validate;
-import org.w3c.dom.Entity;
+import Service.*;
 
-import java.nio.charset.Charset;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Scanner;
 
 public class Main {
 
@@ -21,11 +19,8 @@ public class Main {
     public static final String ANSI_CYAN = "\u001B[36m";
     public static final String ANSI_WHITE = "\u001B[37m";
 
-
     private static HashMap<Integer, Human> humans = new HashMap<>();
     private static ArrayList<Human> arrayList = new ArrayList<>();
-
-
 
     public static void main(String[] args) {
 
@@ -127,17 +122,15 @@ public class Main {
                                             Human newHuman = new Human(family, name, patronymic, selectGender, requirements, request, dateRegister);
                                             humans.put(newHuman.getID(), newHuman);
                                             arrayList.add(newHuman);
+                                            new FileSaver().fileSaver();
                                         System.out.println(ANSI_GREEN + "~ Вы успешно создали Анкету." + ANSI_RESET);
 
                                     }
-                                        case "0" -> {
-                                            selectOption();
-                                        }
+                                        case "0" -> selectOption();
                                     }
                             }
-                            case "2" -> {
-                                selectOption();
-                                }  default -> {
+                            case "2" -> selectOption();
+                            default -> {
                                     System.out.println(ANSI_RED + "~ Неверный ввод!" + ANSI_RESET);
                                     selectOption();
                                 }
@@ -168,9 +161,7 @@ public class Main {
                     System.out.println(Strings.join("", humans.values().stream().toList()));
                 }
 
-                case "4" -> {
-                    Search.searchGender(arrayList);
-                }
+                case "4" -> Search.searchGender(arrayList);
 
                 case "0" -> {
                     System.out.println(ANSI_CYAN + "~ Вы остановили программу" + ANSI_RESET);
